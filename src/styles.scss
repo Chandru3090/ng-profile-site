@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/argon-dashboard.scss";
-
+@media (max-width: 767px) {
+  .btn-block-small-only {
+    display: block;
+    width: 100%;
+  }
+  .mt-2-small-only {
+    margin-top: 1rem;
+  }
+}
 @font-face {
   font-family: "Halimun";
   font-style: normal;

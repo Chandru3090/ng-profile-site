@@ -19,19 +19,25 @@ export class Covid19Service {
   constructor(private http: HttpClient) { }
 
   getAllLocations() {
-    return this.http.get(`${environment.caseByCountry}`, this.httpOptions);
+    return this.http.get(`${environment.caseByAllCountry}`, this.httpOptions);
   }
 
   getWorldTotalStats() {
     return this.http.get(`${environment.worldTotalStats}`, this.httpOptions);
   }
 
-  setLocations(data) {
-    this.allLocations = data;
+  getCaseByCountryWise(country: string) {
+    return this.http.get(`${environment.caseByCountryWise}?country=${country}`, this.httpOptions);
   }
 
-  getLocations() {
-    return this.allLocations;
+  getCovid19IndiaStats() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-rapidapi-host': 'covid19india.p.rapidapi.com',
+        'x-rapidapi-key': '05843a9d53msha59473c2a31c30bp129d15jsn1d09a999333d'
+      })
+    };
+    return this.http.get(`${environment.indiaStateData}`, httpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

@@ -10,15 +10,20 @@ import { combineLatest, Subscription } from 'rxjs';
 export class ViewbyCountryComponent implements OnInit, OnDestroy {
   routerSubscriptions: Subscription;
   data: any;
-  getCountryWiseInfo$ = combineLatest(this.service.getAllLocations(), this.route.paramMap);
+  getCountryWiseInfo$;
   constructor(private router: Router, private route: ActivatedRoute, private service: Covid19Service) { }
 
   ngOnInit() {
-    this.routerSubscriptions = this.getCountryWiseInfo$.subscribe(([datas, params]) => {
-        this.data = datas['countries_stat'].filter(x => x.country_name == params.get('country'))[0];
-        if (!params.get('country')) {
-          this.router.navigate(['/covid19']);
+    this.routerSubscriptions = this.route.paramMap.subscribe(params => {
+      this.service.getCaseByCountryWise(params.get('country')).subscribe(data => {
+        if (data) {
+          this.data = data['latest_stat_by_country'][0];
+          console.log(data)
         }
+      });
+      if (!params.get('country')) {
+        this.router.navigate(['/covid19']);
+      }
     })
   }
 

@@ -11,4 +11,8 @@ export class Covid19Component {
   getAllInfo$ = this.service.getWorldTotalStats();
   getCountryWiseInfo$ = this.service.getAllLocations();
   constructor(private service: Covid19Service) { }
+
+  newCaseIndicatorCheck(newCase: string) {
+    return (+newCase.replace(/,/g, "")) ? true : false;
+  }
 }
