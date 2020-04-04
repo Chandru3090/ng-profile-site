@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  caseByCountry:'https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php',
+  worldTotalStats:'https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php'
 };
 
 /*

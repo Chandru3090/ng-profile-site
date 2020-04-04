@@ -1,0 +1,180 @@
+<div class="main-content">
+    <app-header-dashboard [title]="data?.country_name"></app-header-dashboard>
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+        style="min-height: 500px; background-image: url(../assets/img/theme/map-cover.png); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+                <h3 class="text-white mb-3" style="opacity: 0.9;">Coronavirus monitor Overview of {{data?.country_name}}
+                </h3>
+                <div class="row mb-5" *ngIf="data">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Coronavirus Cases</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.cases}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-success mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">New Cases</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.new_cases}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-danger mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Recovered</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.total_recovered}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-danger mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Active Cases</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.active_cases}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-danger mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5" *ngIf="data">
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Critical Cases</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.serious_critical}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-success mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">New Deaths</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.new_deaths}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-danger mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Deaths</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{data?.deaths}}</span>
+                                    </div>
+                                    <!-- <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-danger mr-2"><a routerLink="/viewbycountry">View by
+                                            country</a></span>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-white" style="opacity: 0.9;"><small><em>* This Data provides realtime information about
+                            the coronavirus situation. We
+                            monitor worldometer,
+                            <span class="initialism">cdc.gov</span> and Johns Hopkins and grab the most relevant
+                            information for
+                            you periodically. Some
+                            endpoints gets information every minute, some other one time per 10 minutes.</em></small>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="row mt-5">
+            <div class="col">&nbsp;</div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>

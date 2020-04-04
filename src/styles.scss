@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/argon-dashboard.scss";
+
+@font-face {
+  font-family: "Halimun";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Halimun"), url("./assets/fonts/Halimun.woff") format("woff");
+}
+
+.halimun-font {
+  font-family: "Halimun";
+}
+
+.font-2rem {
+  font-size: 2rem;
+}
