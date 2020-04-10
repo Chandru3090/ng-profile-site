@@ -1,47 +1,61 @@
 import { Component, OnInit } from '@angular/core';
 import { Covid19Service } from '../covid19.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-covid19-india',
   templateUrl: './covid19-india.component.html'
 })
 export class Covid19IndiaComponent implements OnInit {
-  indiaStateWiseData: any[];
-  totalConfirmedCase: number;
-  totalRecoveredCase: number;
-  totalDeathCase: number;
+  covi19IndiaData: any;
   search: any;
-  constructor(private service: Covid19Service) { }
+  today = new Date();
+  isExpand = false;
+  constructor(public service: Covid19Service, private router: Router) { }
 
   ngOnInit() {
     this.getCovid19IndiaStats();
   }
 
   getCovid19IndiaStats() {
-    this.service.getCovid19IndiaStats().subscribe(data => {
+    this.service.getCovid19India().subscribe(data => {
       if (data) {
-        this.indiaStateWiseData = data['response'].sort((a, b) => {
-          if (Number(a['confirmed'].replace(/,/g, "")) > Number(b['confirmed'].replace(/,/g, ""))) return -1
-          if (Number(a['confirmed'].replace(/,/g, "")) < Number(b['confirmed'].replace(/,/g, ""))) return 1
-          return 0;
-        });
-        this.getTotalCasesCounts(data['response']);
+        this.covi19IndiaData = this.format(data);
       }
     })
   }
 
-  getTotalCasesCounts(datas: any[]) {
-    this.totalConfirmedCase = datas.reduce((acc, x) => {
-      return (acc + (+(x.confirmed.replace(/,/g, ""))))
-    }, 0);
+  format(data) {
+    return {
+      total: data.total_values,
+      states: this.arrayStates(data.state_wise)
+    }
+  }
 
-    this.totalRecoveredCase = datas.reduce((acc, x) => {
-      return (acc + (+(x.recovered.replace(/,/g, ""))))
-    }, 0);
+  arrayStates(stateWise: any) {
+    let states = [];
+    Object.keys(stateWise).forEach(state => {
+      states.push(stateWise[state]);
+      if (stateWise[state].district) {
+        let districts = [];
+        Object.keys(stateWise[state].district).map(dist => {
+          let district = stateWise[state].district[dist];
+          district.name = dist;
+          districts.push(district);
+        })
+        stateWise[state]['districts'] = districts;
+      }
+    });
+    return states;
+  }
 
-    this.totalDeathCase = datas.reduce((acc, x) => {
-      return (acc + (+(x.deaths.replace(/,/g, ""))))
-    }, 0);
+  stringToNumber(value: string) {
+    return +value.replace(/,/g, "");
+  }
+
+  navigateStateWise(data:any) {
+    this.service.setCovid19StateData(data);
+    this.router.navigate(['covid19/covid19-india-state']);
   }
 
 }

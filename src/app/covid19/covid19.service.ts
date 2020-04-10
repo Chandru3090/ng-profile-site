@@ -10,6 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class Covid19Service {
   allLocations: any;
+  covid19StateData: any;
   httpOptions = {
     headers: new HttpHeaders({
       'x-rapidapi-host': 'coronavirus-monitor.p.rapidapi.com',
@@ -30,14 +31,22 @@ export class Covid19Service {
     return this.http.get(`${environment.caseByCountryWise}?country=${country}`, this.httpOptions);
   }
 
-  getCovid19IndiaStats() {
+  getCovid19India() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'x-rapidapi-host': 'covid19india.p.rapidapi.com',
+        'x-rapidapi-host': 'corona-virus-world-and-india-data.p.rapidapi.com',
         'x-rapidapi-key': '05843a9d53msha59473c2a31c30bp129d15jsn1d09a999333d'
       })
     };
-    return this.http.get(`${environment.indiaStateData}`, httpOptions);
+    return this.http.get(`${environment.covid19India}`, httpOptions);
+  }
+
+  getCovid19StateData() {
+    return this.covid19StateData;
+  }
+
+  setCovid19StateData(data: any) {
+    this.covid19StateData = data;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
