@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class Covid19IndiaStateComponent implements OnInit {
   data: any;
   title: any;
+  search: string;
   constructor(private router: Router, private service: Covid19Service) { }
 
   ngOnInit() {
@@ -18,7 +19,7 @@ export class Covid19IndiaStateComponent implements OnInit {
       this.router.navigate(['covid19/covid19-india']);
     } else {
       this.title = `COVID 19 ${this.data.state}`;
-    }    
+    }
   }
 
   stringToNumber(value: string) {

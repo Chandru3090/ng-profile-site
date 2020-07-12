@@ -85,7 +85,7 @@
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Active Cases</h5>
                                         <span
-                                            class="h2 font-weight-bold mb-0">{{ stringToNumber(covi19IndiaData?.total?.deltarecovered) | number }}</span>
+                                            class="h2 font-weight-bold mb-0">{{ stringToNumber(covi19IndiaData?.total?.active) | number }}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -175,7 +175,7 @@
                                     *ngFor="let data of covi19IndiaData?.states | searchfilter: 'state' : search; let i = index;">
                                     <th>{{i+1}}</th>
                                     <th scope="row">
-                                        <a href="javascript:void(0);" (click)="navigateStateWise(data)">{{data?.state}}</a>
+                                        <a href="javascript:void(0);" [tooltip]="data?.statenotes" (click)="navigateStateWise(data)">{{data?.state}}</a>
                                     </th>
                                     <td>
                                         <b>{{stringToNumber(data?.confirmed) | number}}

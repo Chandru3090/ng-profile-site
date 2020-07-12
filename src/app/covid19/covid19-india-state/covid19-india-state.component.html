@@ -139,7 +139,11 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">District</th>
+                                    <th scope="col">Confirmed</th>
+                                    <th scope="col">Active</th>
+                                    <th scope="col">Recovered</th>
                                     <th scope="col">New Cases</th>
+                                    <th scope="col">Deaths</th>
                                 </tr>
                             </thead>
                             <tbody *ngIf="data?.districts?.length > 0">
@@ -150,6 +154,10 @@
                                         <a>{{data?.name}}</a>
                                     </th>
                                     <td><b>{{data?.confirmed}}</b></td>
+                                    <td><b>{{data?.active}}</b></td>
+                                    <td><b>{{data?.recovered}}</b></td>
+                                    <td><b>{{data?.delta?.confirmed}}</b></td>
+                                    <td><b>{{data?.deceased}}</b></td>
                                 </tr>
                             </tbody>
                             <tbody *ngIf="!data?.districts">
