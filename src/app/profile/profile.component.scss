@@ -8,3 +8,26 @@
         }
     }
 }
+#card {
+    flex-direction: row;
+    .device-2x {
+        position: relative;
+        top:-58px;
+        align-items: center;
+        .device {
+            transform: rotate(30deg) scale(.2);
+        }
+        .device-google-pixel-2-xl {
+            height:200px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    #card {
+        .device-2x {
+            left:-20px;
+        }
+    }
+}
+
